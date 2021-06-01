@@ -1,7 +1,7 @@
 # DataPipeline
 
 
-#### Description
+### Description
 
 Implementation of a scalable distributed image stream processer using Kafka, Tensorflow, and Spark. 
 
@@ -12,11 +12,71 @@ This project will demostrate an ETL architecture which will:
 3) Load all image embeddings into a database for it to be used for analytics (Image search using NLP)
 4) Provide real-time analytics / reporting on our ETL 
 
-#### Goals/Tasks
+### Goals/Tasks
 
 * Implement an end to end solution for a real world business case scenario within big data and computer vision
 * Showcase the power of distributed processing within Big Data
 
-##### Contributers
+### Install Dependencies
 
-* Jacob Lebowitz
+Below is the installation guide of all dependencies on Ubunto 20.04
+
+1) get pip requriements 
+
+```console
+$ pip3 install -r requirements.txt
+```
+
+2) Install Java: 
+
+```console
+$ sudo apt install default-jre 
+```
+
+```console
+$ sudo apt install default-jdk
+```
+
+```console
+$ java -version
+```
+
+```console
+$ javac -version
+```
+
+3) [Download Kafka from here ](https://www.apache.org/dyn/closer.cgi?path=/kafka/2.8.0/kafka_2.13-2.8.0.tgz)
+
+
+4) Extract it
+
+```console
+$ tar -xzf kafka_2.13-2.8.0.tgz
+```
+
+### How to Run locally 
+
+1) CD into Kafka directory
+
+```console
+$ cd kafka_2.13-2.8.0
+```
+
+2) Start Kafka Environment
+
+```console
+# Start the ZooKeeper service
+$ bin/zookeeper-server-start.sh config/zookeeper.properties
+```
+
+```console
+# Start the Kafka broker service
+$ bin/kafka-server-start.sh config/server.properties
+```
+
+3) Start a single Faust worker
+
+```console
+$ faust -A stream_processor worker -l info
+```
+
