@@ -77,6 +77,18 @@ $ bin/kafka-server-start.sh config/server.properties
 3) Start a single Faust worker
 
 ```console
-$ faust -A stream_processor worker -l info
+$ faust -A pipeline worker -l info
 ```
 
+4) OPTIONAL start many Faust workers (each workers needs a unique data directory and web port)
+
+
+```console
+$ faust --datadir=workers/worker1 -A pipeline -l info worker --web-port=6066
+
+```
+
+```console
+$ faust --datadir=workers/worker2 -A pipeline -l info worker --web-port=6067
+
+```
